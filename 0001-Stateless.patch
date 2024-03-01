@@ -1,0 +1,44 @@
+From 647e208eff26d6e6ebc99ab0c33769c39e4a961c Mon Sep 17 00:00:00 2001
+From: William Douglas <william.douglas@intel.com>
+Date: Fri, 1 Mar 2024 13:50:12 -0800
+Subject: [PATCH] Stateless
+
+Signed-off-by: William Douglas <william.douglas@intel.com>
+---
+ Makefile.am     | 4 ++--
+ bash_completion | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 27366b7..7a30979 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -3,10 +3,10 @@ SUBDIRS = completions doc helpers test
+ pkgdata_DATA = bash_completion
+ 
+ # Empty, but here just to get the compat dir created with install
+-compatdir = $(sysconfdir)/bash_completion.d
++compatdir = $(datadir)/defaults/etc/bash_completion.d
+ compat_DATA = bash_completion.d/000_bash_completion_compat.bash
+ 
+-profiledir = $(sysconfdir)/profile.d
++profiledir = $(datadir)/defaults/etc/profile.d
+ profile_DATA = bash_completion.sh
+ 
+ pkgconfigdir = $(datadir)/pkgconfig
+diff --git a/bash_completion b/bash_completion
+index e245cc5..c081322 100644
+--- a/bash_completion
++++ b/bash_completion
+@@ -3306,7 +3306,7 @@ _comp__init_compat_dirs=()
+ if [[ ${BASH_COMPLETION_COMPAT_DIR-} ]]; then
+     _comp__init_compat_dirs+=("$BASH_COMPLETION_COMPAT_DIR")
+ else
+-    _comp__init_compat_dirs+=(/etc/bash_completion.d)
++    _comp__init_compat_dirs+=(/etc/bash_completion.d /usr/share/defaults/etc/bash_completion.d)
+     # Similarly as for the "completions" dir, look up from relative to
+     # bash_completion, primarily for installed-with-prefix and
+     # run-in-place-from-git-clone setups.  Notably we do it after the system
+-- 
+2.43.0
+
