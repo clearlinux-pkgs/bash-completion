@@ -11,3 +11,5 @@
 /usr/share/bash-completion/completions/mount
 /usr/share/bash-completion/completions/umount
 /usr/share/bash-completion/completions/secret-tool
+/usr/share/bash-completion/completions/insmod
+/usr/share/bash-completion/completions/rmmod
